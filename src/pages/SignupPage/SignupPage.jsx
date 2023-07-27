@@ -33,6 +33,7 @@ function SignupPage() {
     .then((response) => {})
     */
 
+    // Hello world
     // Or using a service
     authService
       .signup(requestBody)
