@@ -27,32 +27,55 @@ function QuizStartPage() {
 
   // JSX für die Auswahlmöglichkeiten basierend auf den Profilabfrage-Antworten
   const renderQuizOptions = () => {
+    console.log('renderQuizOptions called');
+    console.log('JoinedClass:', JoinedClass);
+    console.log('AttendedClass:', AttendedClass);
     if (JoinedClass === true) {
       if (AttendedClass === 'HTML') {
         return (
-          <div>
-            <h2>Auswahlmöglichkeiten</h2>
-            <div>
-              <p>HTML</p>
-              <Link to={`/questions/HTML`}><button>Zum Quiz</button></Link>
-            </div>
-            <div>
-              <p>CSS</p>
-              <Link to={`/questions/CSS`}><button>Zum Quiz</button></Link>
+          <div className="mx-auto w-1/2">
+            <h2 className="text-4xl font-bold mb-4">Mit welchem Quiz möchtest du starten?</h2>
+            <div className="flex space-x-4">
+              <div className="flex-1 p-4 bg-white bg-opacity-30 rounded shadow-md">
+                <div className="flex justify-between">
+                  <p className="font-bold">HTML</p>
+                  <Link to={`/questions/HTML`}>
+                    <button className="px-4 py-2 rounded text-white bg-blue-500">Zum Quiz</button>
+                  </Link>
+                </div>
+              </div>
+              <div className="flex-1 p-4 bg-white bg-opacity-30 rounded shadow-md">
+                <div className="flex justify-between">
+                  <p className="font-bold">CSS</p>
+                  <Link to={`/questions/CSS`}>
+                    <button className="px-4 py-2 rounded text-white bg-blue-500">Zum Quiz</button>
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         );
       } else if (AttendedClass === 'CSS') {
         return (
-          <div>
-            <h2>Auswahlmöglichkeiten</h2>
-            <div>
-              <p>CSS</p>
-              <Link to={`/questions/CSS`}><button>Zum Quiz</button></Link>
-            </div>
-            <div>
-              <p>Codingspiele 1</p>
-              <Link to={`/questions/Codingspiele 1`}><button>Zum Quiz</button></Link>
+          <div className="mx-auto w-1/2">
+            <h2 className="text-4xl font-bold mb-4">Mit welchem Quiz möchtest du starten?</h2>
+            <div className="flex space-x-4">
+              <div className="flex-1 p-4 bg-white bg-opacity-30 rounded shadow-md">
+                <div className="flex justify-between">
+                  <p className="font-bold">CSS</p>
+                  <Link to={`/questions/CSS`}>
+                    <button className="px-4 py-2 rounded text-white bg-blue-500">Zum Quiz</button>
+                  </Link>
+                </div>
+              </div>
+              <div className="flex-1 p-4 bg-white bg-opacity-30 rounded shadow-md">
+                <div className="flex justify-between">
+                  <p className="font-bold">Codingspiele 1</p>
+                  <Link to={`/questions/Codingspiele 1`}>
+                    <button className="px-4 py-2 rounded text-white bg-blue-500">Zum Quiz</button>
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         );
@@ -60,12 +83,13 @@ function QuizStartPage() {
     }
     return null;
   };
-
+  
   return (
-    <div>
+    <div className="flex items-start justify-center min-h-screen bg-gradient-to-br from-purple-600 to-blue-500 text-white pt-32">
       {renderQuizOptions()}
     </div>
   );
+  
 };
 
 export default QuizStartPage;

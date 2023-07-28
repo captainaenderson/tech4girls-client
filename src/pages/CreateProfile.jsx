@@ -88,84 +88,92 @@ const handleSubmit = async (e) => {
 
   return (
     <>
-      <div>
-        <h1>Profile page</h1>
+      <div className="ProfilePage text-white flex flex-col items-center justify-start min-h-screen pt-20 space-y-4">
+  <h1 className="text-6xl font-bold">Erstelle dein Profil</h1>
+
+  <form onSubmit={handleSubmit} className="space-y-4 text-center">
+    <h2 className="text-xl">Such dir ein Profilbild aus</h2>
+
+    <div className="flex items-center justify-center space-x-4 pb-2">
+      {imageUrls.map((imageUrl, index) => (
+        <div
+          key={index}
+          onClick={() => handleImageClick(index)}
+          className={`w-20 h-20 cursor-pointer border-4 transition-all duration-200 ease-in-out ${
+            index === selectedImageIndex
+              ? "border-purple-800 bg-opacity-50 bg-black"
+              : "border-gray-300"
+          }`}
+        >
+          <img
+            className="w-full h-full object-cover"
+            src={imageUrl}
+            alt={`Profile ${index}`}
+          />
+        </div>
+      ))}
+    </div>
+
+    <div>
+      <h2 className="text-xl pb-4">Hast du bei Tech4Girls einen Kurs belegt?</h2>
+      <div className="flex items-center justify-center space-x-4">
+        <button
+          type="button"
+          onClick={() => handleJoinedClassChange(true)}
+          className={`px-4 py-2 rounded text-white ${
+            form.JoinedClass === true ? "bg-green-500" : "bg-gray-300"
+          }`}
+        >
+          Ja
+        </button>
+        <button
+          type="button"
+          onClick={() => handleJoinedClassChange(false)}
+          className={`px-4 py-2 rounded text-white ${
+            form.JoinedClass === false ? "bg-green-500" : "bg-gray-300"
+          }`}
+        >
+          Nein
+        </button>
       </div>
-      <form onSubmit={handleSubmit}>
-        <h2>Such dir ein Profilbild aus</h2>
-        <div>
-          <div>
-            {imageUrls.map((imageUrl, index) => (
-              <div
-                key={index}
-                onClick={() => handleImageClick(index)}
-                style={{
-                  width: "100px",
-                  height: "100px",
-                  border: index === selectedImageIndex ? "4px solid #00ff00" : "2px solid #ccc",
-                  borderRadius: "50%",
-                  cursor: "pointer",
-                  overflow: "hidden",
-                  marginRight: "20px"
-                }}
-              >
-                <img
-                  src={imageUrl}
-                  alt={`Profile ${index}`}
-                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
+    </div>
 
-        <div>
-          {/* Radio Buttons für die JoinedClass-Auswahl mit Button-Stil */}
-          <h2>Hast du bei Tech4Girls einen Kurs belegt?</h2>
-          <button
-            type="button"
-            onClick={() => handleJoinedClassChange(true)}
-            style={{ backgroundColor: form.JoinedClass === true ? '#00ff00' : '#ccc' }}
-          >
-            Ja
-          </button>
-          <button
-            type="button"
-            onClick={() => handleJoinedClassChange(false)}
-            style={{ backgroundColor: form.JoinedClass === false ? '#00ff00' : '#ccc' }}
-          >
-            Nein
-          </button>
-        </div>
+    {form.JoinedClass === true && (
+      <label className="block text-xl">
+        Attended Class:
+        <select
+          name="AttendedClass"
+          value={form.AttendedClass}
+          onChange={handleChange}
+          className="block w-full my-2 p-2 rounded bg-white text-black"
+        >
+          <option value="">Select class</option>
+          <option value="HTML">HTML</option>
+          <option value="CSS">CSS</option>
+          <option value="Codingspiele 1">Codingspiele 1</option>
+          <option value="Codingspiele 2">Codingspiele 2</option>
+        </select>
+      </label>
+    )}
 
-        {/* Anzeigen von AttendedClass oder Age basierend auf der Auswahl */}
-        {form.JoinedClass === true && (
-          <label>
-            Attended Class:
-            <select name="AttendedClass" value={form.AttendedClass} onChange={handleChange}>
-              <option value="">Select class</option>
-              <option value="HTML">HTML</option>
-              <option value="CSS">CSS</option>
-              <option value="Codingspiele 1">Codingspiele 1</option>
-              <option value="Codingspiele 2">Codingspiele 2</option>
-            </select>
-          </label>
-        )}
+    {form.JoinedClass === false && (
+      <label className="block text-xl">
+        Age:
+        <input
+          className="block w-full my-2 p-2 rounded bg-white text-black"
+          type="number"
+          name="Age"
+          value={form.Age}
+          onChange={handleChange}
+        />
+      </label>
+    )}
 
-        {form.JoinedClass === false && (
-          <label>
-            Age:
-            <input
-              type="number"
-              name="Age"
-              value={form.Age}
-              onChange={handleChange}
-            />
-          </label>
-        )}
+    <button className="px-4 py-2 mt-4 bg-blue-500 rounded text-white">Create Profile</button>
+  </form>
+</div>
 
-        <button type="submit">Create Profile</button>
-      </form>
+
     </>
   );
 }

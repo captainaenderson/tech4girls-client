@@ -1,5 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
+@keyframes gradient-bg {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
 
-.App {
-  text-align: center;
+body {
+    /*background-color: #4E22CF;*/
+    font-family: "Montserrat";
+    background-size: 200% 200%;
+    background-image: linear-gradient(45deg, #4e22cf, #2c07a9, #5c33a4);
+    animation: gradient-bg 5s ease infinite;
 }
+
+
+  

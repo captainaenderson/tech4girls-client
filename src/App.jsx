@@ -51,9 +51,9 @@ function App() {
         <Route
           path="/questions/:category"
           element={
-            <IsAnon>
+            //<IsAnon>
               <QuizPage />
-            </IsAnon>
+            //</IsAnon>
           }
         />
 

@@ -46,28 +46,29 @@ function LoginPage() {
   };
 
   return (
-    <div className="LoginPage">
-      <h1>Login</h1>
+    <div className="LoginPage  flex flex-col items-center justify-start min-h-screen pt-20">
+    <h1 className="text-4xl my-4 font-bold text-white">Login</h1>
 
-      <form onSubmit={handleLoginSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
+    <form onSubmit={handleLoginSubmit} className="space-y-4 text-center">
+      <div>
+        <label className="text-white">Email:</label>
+        <input className="block my-2 p-2 rounded-lg" type="email" name="email" value={email} onChange={handleEmail} />
+      </div>
 
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
+      <div>
+        <label className="text-white">Password:</label>
+        <input className="block my-2 p-2 rounded-lg" type="password" name="password" value={password} onChange={handlePassword} />
+      </div>
 
-        <button type="submit">Login</button>
-      </form>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+      <button className="px-4 py-2 mt-4 bg-blue-500 rounded text-white">Login</button>
+    </form>
 
-      <p>Don't have an account yet?</p>
-      <Link to={"/signup"}> Sign Up</Link>
-    </div>
+    {errorMessage && <p className="error-message my-4">{errorMessage}</p>}
+
+    <p className="text-white">Don't have an account yet?</p>
+    <Link className="underline text-blue-500" to={"/signup"}> Sign Up</Link>
+</div>
+
   );
 }
 

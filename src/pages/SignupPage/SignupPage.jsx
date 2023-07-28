@@ -51,32 +51,39 @@ function SignupPage() {
   };
 
   return (
-    <div className="SignupPage">
-      <h1>Sign Up</h1>
+    <div className="SignupPage flex flex-col items-center justify-start min-h-screen pt-20">
+    <h1 className="text-4xl my-4 font-bold text-white ">Sign Up</h1>
 
-      <form onSubmit={handleSignupSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
+    <form onSubmit={handleSignupSubmit} className="space-y-4 text-center">
+      <div>
+        <label className="text-white ">Email:</label>
+        <input className="block my-2 p-2 rounded-lg" type="email" name="email" value={email} onChange={handleEmail} />
+      </div>
 
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
+      <div>
+        <label className="text-white ">Password:</label>
+        <input className="block my-2 p-2 rounded-lg" type="password" name="password" value={password} onChange={handlePassword} />
+      </div>
 
-        <label>Name:</label>
-        <input type="text" name="name" value={name} onChange={handleName} />
+      <div>
+        <label className="text-white ">Name:</label>
+        <input className="block my-2 p-2 rounded-lg" type="text" name="name" value={name} onChange={handleName} />
+      </div>
 
-        <button type="submit">Sign Up</button>
-      </form>
+      <button className="px-4 py-2 mt-4 bg-blue-500 rounded text-white">Sign Up</button>
+    </form>
 
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+    {errorMessage && <p className="error-message my-4">{errorMessage}</p>}
 
-      <p>Already have account?</p>
-      <Link to={"/login"}> Login</Link>
-    </div>
+    <p className="text-white ">Already have account?</p>
+    <Link className="underline text-blue-500" to={"/login"}> Login</Link>
+</div>
+
+
+
+
+
+
   );
 }
 
