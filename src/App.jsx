@@ -69,9 +69,9 @@ function App() {
         <Route
           path="/signup"
           element={
-            <IsAnon>
+            //<IsAnon>
               <SignupPage />
-            </IsAnon>
+            //</IsAnon>
           }
         />
         <Route

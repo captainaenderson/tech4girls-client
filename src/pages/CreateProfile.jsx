@@ -11,7 +11,7 @@ function CreateProfilePage() {
 
   const {id} = useParams()
 
-  const { user, quiz, setQuiz } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   console.log(user);
 
   
@@ -73,7 +73,7 @@ const handleSubmit = async (e) => {
   try {
     const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/profile/create-profile/${id}`, form);
     console.log('Profile created:', response.data);
-    const newUser = {...user, profile_id: response.data._id}
+    //const newUser = {...user, profile_id: response.data._id}
     localStorage.setItem('quizId', response.data._id)
 
 

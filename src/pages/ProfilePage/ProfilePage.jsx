@@ -1,5 +1,4 @@
 // React Code (Client-Seitig)
-import React, { useState } from 'react';
 
 
 function ProfilePage() {
